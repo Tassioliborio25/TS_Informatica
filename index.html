@@ -1,0 +1,1738 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="TS Informática - Soluções técnicas em manutenção de computadores, formatação, redes, impressoras, instalação de software e muito mais. Atendemos Jequitinhonha e região.">
+  <meta name="keywords" content="manutenção de computadores, formatação, limpeza de PC, técnico em informática, suporte técnico, redes, impressoras, TS Informática, Jequitinhonha, assistência técnica">
+  <meta name="author" content="TS Informática - Tassio Souza Liborio">
+  <meta name="robots" content="index, follow">
+  <title>TS Informática - Soluções Técnicas Avançadas</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="iconets.ico" type="image/x-icon" />
+  <style>
+    /* Reset e variáveis */
+    :root {
+      --primary: #44AFF2;
+      --primary-dark: #2E8BC0;
+      --secondary: #25D366;
+      --dark: #222;
+      --light: #f8f9fa;
+      --gray: #6c757d;
+      --accent: #FF6B6B;
+      --tech-blue: #5E72EB;
+      --tech-purple: #8A2BE2;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #fff;
+      color: var(--dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+    
+    h1, h2, h3, h4, h5 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+    }
+    
+    /* Header e navegação */
+    header {
+      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+      padding: 15px 0;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .logo-container {
+      width: 100px;
+      height: 100px;
+      overflow: hidden;
+      border-radius: 50%;
+      box-shadow: 0 8px 20px rgba(68, 175, 242, 0.5);
+      animation: float 4s ease-in-out infinite;
+    }
+    
+    .logo-container .logo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+    
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1rem;
+      padding: 8px 15px;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    nav ul li a:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    nav ul li a.active {
+      background: white;
+      color: var(--primary-dark);
+    }
+    
+    .nav-btn {
+      display: none;
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    
+    /* Hero com parallax aprimorado */
+    .hero {
+      height: 85vh;
+      background: 
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)),
+        url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    
+    .hero-content {
+      max-width: 900px;
+      animation: fadeInUp 1s ease-out;
+    }
+    
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      color: white;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+      line-height: 1.2;
+    }
+    
+    .hero p {
+      font-size: 1.5rem;
+      line-height: 1.6;
+      color: white;
+      margin-bottom: 40px;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+    }
+    
+    .hero-btns {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+    
+    /* Botão âncora estilizado como botão */
+    .btn-ancora {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--tech-purple);
+      color: white;
+      font-weight: 600;
+      border: none;
+      border-radius: 50px;
+      padding: 12px 30px;
+      font-size: 1.1rem;
+      box-shadow: 0 5px 15px rgba(142, 43, 226, 0.4);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+      gap: 8px;
+    }
+    
+    .btn-ancora:hover {
+      background: #7a1fd1;
+      box-shadow: 0 7px 18px rgba(122, 31, 209, 0.6);
+      transform: translateY(-3px);
+    }
+    
+    /* Seção Serviços */
+    .servicos {
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+    
+    .section-title {
+      font-size: 2.8rem;
+      margin-bottom: 60px;
+      color: var(--dark);
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary), var(--tech-purple));
+      border-radius: 2px;
+    }
+    
+    /* Container dos cards */
+    .cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+    
+    /* Card individual */
+    .card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      padding: 35px 25px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.4s ease;
+      cursor: default;
+      user-select: none;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(68, 175, 242, 0.1);
+    }
+    
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary), var(--tech-purple));
+    }
+    
+    .card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+    
+    .card-icon {
+      font-size: 3.5rem;
+      color: var(--primary);
+      margin-bottom: 25px;
+    }
+    
+    .card h3 {
+      color: var(--primary-dark);
+      margin-bottom: 18px;
+      font-size: 1.5rem;
+    }
+    
+    .card p {
+      flex-grow: 1;
+      font-size: 1.05rem;
+      color: var(--gray);
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+    
+    /* Botão WhatsApp */
+    .btn-whats {
+      background-color: var(--secondary);
+      color: white;
+      font-weight: 600;
+      border: none;
+      border-radius: 50px;
+      padding: 12px 30px;
+      font-size: 1.1rem;
+      box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    
+    .btn-whats:hover {
+      background-color: #1ebe5d;
+      box-shadow: 0 7px 18px rgba(30, 180, 85, 0.6);
+      transform: translateY(-3px);
+    }
+    
+    /* Seção de Garantias */
+    .garantias {
+      background: linear-gradient(135deg, #eef2f7, #dce7f5);
+      padding: 100px 20px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .garantias-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      margin-top: 50px;
+    }
+    
+    .garantia-item {
+      text-align: center;
+      padding: 40px 30px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+    }
+    
+    .garantia-item:hover {
+      transform: translateY(-10px);
+    }
+    
+    .garantia-item i {
+      font-size: 3.5rem;
+      color: var(--primary);
+      margin-bottom: 25px;
+    }
+    
+    .garantia-item h3 {
+      font-size: 1.6rem;
+      color: var(--primary-dark);
+      margin-bottom: 15px;
+    }
+    
+    .garantia-item p {
+      color: var(--gray);
+      line-height: 1.6;
+    }
+    
+    /* Seção Sobre */
+    .sobre {
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+      padding: 100px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .sobre-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 60px;
+    }
+    
+    .sobre-img {
+      flex: 1;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.377);
+      transform: rotate(-2deg);
+      max-width: 450px;
+    }
+    
+    .sobre-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    
+    .sobre-img:hover img {
+      transform: scale(1.05);
+    }
+    
+    .sobre-content {
+      flex: 1;
+    }
+    
+    .sobre-content h2 {
+      font-size: 2.5rem;
+      margin-bottom: 25px;
+      color: var(--dark);
+    }
+    
+    .sobre-content p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--gray);
+      margin-bottom: 25px;
+    }
+    
+    .tech-category {
+      margin-top: 30px;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .tech-category i {
+      font-size: 1.5rem;
+      color: var(--primary);
+    }
+    
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+    
+    .tech-item {
+      background: white;
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      border: 1px solid rgba(0,0,0,0.05);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    /* Seção Depoimentos Simplificada */
+    .depoimentos {
+      padding: 100px 20px;
+      background: white;
+    }
+    
+    .depoimentos-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+    
+    .depoimento-card {
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+    
+    .depoimento-card:hover {
+      transform: translateY(-10px);
+    }
+    
+    .depoimento-card::before {
+      content: '"';
+      position: absolute;
+      top: 15px;
+      left: 20px;
+      font-size: 4rem;
+      color: var(--primary);
+      opacity: 0.2;
+      font-family: serif;
+      line-height: 1;
+    }
+    
+    .depoimento-texto {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--gray);
+      margin-bottom: 25px;
+      position: relative;
+      z-index: 1;
+      padding-left: 20px;
+      font-style: italic;
+    }
+    
+    .depoimento-autor {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding-left: 20px;
+    }
+    
+    .autor-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+    }
+    
+    .autor-info h4 {
+      color: var(--primary-dark);
+      font-size: 1.2rem;
+    }
+    
+    /* Formulário para enviar depoimento */
+    .enviar-depoimento {
+      max-width: 800px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+    
+    .enviar-depoimento h3 {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+      color: var(--primary-dark);
+    }
+    
+    .form-depoimento {
+      display: grid;
+      gap: 20px;
+    }
+    
+    .form-depoimento .form-group {
+      margin-bottom: 0;
+    }
+    
+    .btn-enviar-depoimento {
+      background: linear-gradient(90deg, var(--primary), var(--tech-purple));
+      color: white;
+      border: none;
+      padding: 15px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-block;
+      width: 100%;
+      margin-top: 10px;
+    }
+    
+    .btn-enviar-depoimento:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(68, 175, 242, 0.3);
+    }
+    
+    /* Seção Contato */
+    .contato {
+      max-width: 1000px;
+      margin: 100px auto;
+      padding: 0 20px;
+    }
+    
+    .contact-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 50px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    
+    .contact-info {
+      background: linear-gradient(135deg, var(--primary), var(--tech-blue));
+      padding: 50px 40px;
+      color: white;
+    }
+    
+    .contact-info h3 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+    }
+    
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    
+    .contact-icon {
+      font-size: 1.5rem;
+      background: rgba(255, 255, 255, 0.2);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    
+    .contact-text h4 {
+      font-size: 1.3rem;
+      margin-bottom: 5px;
+    }
+    
+    .contact-text p, .contact-text a {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+    }
+    
+    .contact-form {
+      padding: 50px 40px;
+    }
+    
+    .form-group {
+      margin-bottom: 25px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: var(--dark);
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 14px 20px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .form-control:focus {
+      border-color: var(--primary);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(68, 175, 242, 0.2);
+    }
+    
+    textarea.form-control {
+      min-height: 150px;
+      resize: vertical;
+    }
+    
+    .btn-submit {
+      background: linear-gradient(90deg, var(--primary), var(--tech-purple));
+      color: white;
+      border: none;
+      padding: 15px 40px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-block;
+      width: 100%;
+    }
+    
+    .btn-submit:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(68, 175, 242, 0.3);
+    }
+    
+    /* Agendamento */
+    .agendamento {
+      text-align: center;
+      margin-top: 40px;
+      padding: 20px;
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+      border-radius: 16px;
+    }
+    
+    .agendamento h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: var(--primary-dark);
+    }
+    
+    .agendamento p {
+      color: var(--gray);
+      margin-bottom: 20px;
+    }
+    
+    /* Footer */
+    footer {
+      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: auto;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-bottom: 25px;
+    }
+    
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: white;
+      font-size: 1.4rem;
+      transition: all 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      background: white;
+      color: var(--primary);
+      transform: translateY(-5px);
+    }
+    
+    footer p {
+      font-size: 1.1rem;
+      margin-top: 10px;
+    }
+    
+    footer a {
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    
+    footer a:hover {
+      text-decoration: underline;
+      color: var(--secondary);
+    }
+    
+    /* Botão de emergência 24h */
+    .emergency-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 1000;
+      animation: pulse 2s infinite;
+    }
+    
+    .emergency-btn a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(90deg, #ff4d4d, #cc0000);
+      color: white;
+      padding: 15px 25px;
+      border-radius: 50px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 5px 20px rgba(255, 0, 0, 0.4);
+      transition: all 0.3s ease;
+    }
+    
+    .emergency-btn a:hover {
+      transform: scale(1.05);
+      box-shadow: 0 7px 25px rgba(255, 0, 0, 0.6);
+    }
+    
+    /* Pop-up de Saída melhorado */
+    .exit-popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .exit-popup.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .popup-content {
+      background: white;
+      padding: 40px;
+      border-radius: 16px;
+      max-width: 500px;
+      width: 90%;
+      position: relative;
+      text-align: center;
+      animation: popIn 0.5s ease-out;
+    }
+    
+    @keyframes popIn {
+      0% { transform: scale(0.9); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    
+    .close-popup {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--gray);
+      transition: all 0.3s;
+    }
+    
+    .close-popup:hover {
+      color: var(--accent);
+      transform: rotate(90deg);
+    }
+    
+    .popup-content h3 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: var(--primary-dark);
+    }
+    
+    .popup-content p {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+    
+    .coupon {
+      background: var(--tech-purple);
+      color: white;
+      padding: 5px 15px;
+      border-radius: 5px;
+      font-weight: bold;
+      display: inline-block;
+      margin: 10px 0;
+      font-size: 1.3rem;
+    }
+    
+    .popup-btn {
+      margin: 25px 0 15px;
+      width: 100%;
+    }
+    
+    .dont-show-again {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 15px;
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+    
+    .dont-show-again input {
+      width: 18px;
+      height: 18px;
+    }
+    
+    /* Animações */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    /* Responsividade */
+    @media (max-width: 980px) {
+      .sobre-container {
+        flex-direction: column;
+      }
+      
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      
+      .hero p {
+        font-size: 1.3rem;
+      }
+      
+      .enviar-depoimento {
+        padding: 30px;
+      }
+      
+      .garantias-grid {
+        gap: 20px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .nav-btn {
+        display: block;
+      }
+      
+      nav ul {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        flex-direction: column;
+        background: var(--primary-dark);
+        width: 70%;
+        height: 100vh;
+        padding: 90px 20px 20px;
+        transition: right 0.3s ease;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        z-index: 999;
+      }
+      
+      nav ul.active {
+        right: 0;
+      }
+      
+      .hero {
+        height: 70vh;
+      }
+      
+      .hero h1 {
+        font-size: 2.3rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+      
+      .hero-btns {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .section-title {
+        font-size: 2.3rem;
+      }
+      
+      .tech-item {
+        padding: 8px 15px;
+        font-size: 0.85rem;
+      }
+      
+      .contact-container {
+        gap: 0;
+      }
+      
+      .contact-info, .contact-form {
+        padding: 30px 20px;
+      }
+      
+      .depoimentos-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .enviar-depoimento {
+        padding: 20px;
+      }
+      
+      .emergency-btn a {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+      }
+      
+      .popup-content {
+        padding: 25px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .logo-container {
+        width: 80px;
+        height: 80px;
+      }
+      
+      .hero {
+        height: 60vh;
+        background-attachment: scroll;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .sobre-content h2 {
+        font-size: 2rem;
+      }
+      
+      .hero-btns .btn-whats {
+        padding: 10px 20px;
+        font-size: 1rem;
+      }
+      
+      .contact-detail {
+        gap: 12px;
+      }
+      
+      .contact-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+      }
+      
+      .contact-text h4 {
+        font-size: 1.1rem;
+      }
+      
+      .contact-text p, .contact-text a {
+        font-size: 0.9rem;
+      }
+      
+      .depoimento-card {
+        padding: 20px;
+      }
+      
+      .depoimento-card::before {
+        font-size: 3rem;
+      }
+      
+      .emergency-btn {
+        bottom: 20px;
+        right: 20px;
+      }
+      
+      .emergency-btn a {
+        padding: 10px 15px;
+        font-size: 0.8rem;
+      }
+      
+      .popup-content {
+        padding: 20px;
+      }
+      
+      .popup-content h3 {
+        font-size: 1.5rem;
+      }
+      
+      .popup-content p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header com navegação -->
+  <header>
+    <div class="header-container">
+      <div class="logo-container">
+        <img src="icone.jpg" alt="TS Informática" class="logo" />
+      </div>
+      
+      <button class="nav-btn" id="navToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <nav>
+        <ul id="navMenu">
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#depoimentos">Depoimentos</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Seção Hero com parallax -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+        <h1>TS Informática</h1>
+      <p><em>Soluções Técnicas de Excelência</em></p>
+      <p>Serviços especializados em manutenção e suporte técnico para computadores e redes</p>
+      
+      <div class="hero-btns">
+        <button class="btn-whats">
+          <i class="fab fa-whatsapp"></i> Fale Conosco
+        </button>
+        <!-- Alterado para link âncora -->
+        <a href="#servicos" class="btn-ancora">
+          <i class="fas fa-laptop"></i> Nossos Serviços
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção de Cards Interativos -->
+  <section class="servicos" id="servicos">
+    <h2 class="section-title">Nossos Serviços</h2>
+    <div class="cards-container">
+      <!-- Cada card tem botão WhatsApp que abre o chamado com mensagem customizada -->
+      <article class="card">
+        <div class="card-icon">
+          <i class="fas fa-sync-alt"></i>
+        </div>
+        <h3>Formatação e Otimização</h3>
+        <p>Deixe seu computador rápido e seguro com a nossa formatação profissional. Remoção de vírus e instalação de sistemas operacionais atualizados.</p>
+        <button class="btn-whats" data-msg="Olá! Vim através do site da TS Informática e quero um orçamento para formatação e otimização do meu PC.">
+          <i class="fab fa-whatsapp"></i> Abrir chamado
+        </button>
+      </article>
+
+      <article class="card">
+        <div class="card-icon">
+          <i class="fas fa-wind"></i>
+        </div>
+        <h3>Limpeza Interna e Manutenção</h3>
+        <p>Remoção de poeira e verificação completa para aumentar a vida útil do seu hardware. Prevenção contra superaquecimento.</p>
+        <button class="btn-whats" data-msg="Olá! Vim através do site da TS Informática e preciso de uma limpeza interna e manutenção no meu computador.">
+          <i class="fab fa-whatsapp"></i> Abrir chamado
+        </button>
+      </article>
+
+      <article class="card">
+        <div class="card-icon">
+          <i class="fas fa-microchip"></i>
+        </div>
+        <h3>Troca e Reparo de Peças</h3>
+        <p>Diagnóstico e substituição rápida de peças para deixar tudo funcionando perfeitamente. Uso de componentes de qualidade.</p>
+        <button class="btn-whats" data-msg="Olá! Vim através do site da TS Informática e gostaria de agendar troca ou reparo de peças no meu computador.">
+          <i class="fab fa-whatsapp"></i> Abrir chamado
+        </button>
+      </article>
+
+      <article class="card">
+        <div class="card-icon">
+          <i class="fas fa-download"></i>
+        </div>
+        <h3>Instalação de Software</h3>
+        <p>Instalamos e configuramos programas essenciais para o seu dia a dia. Pacote Office, antivírus, programas especializados e mais.</p>
+        <button class="btn-whats" data-msg="Olá! Vim através do site da TS Informática e preciso de ajuda com instalação e configuração de softwares.">
+          <i class="fab fa-whatsapp"></i> Abrir chamado
+        </button>
+      </article>
+      
+      <!-- Novo card para Redes e Impressoras -->
+      <article class="card">
+        <div class="card-icon">
+          <i class="fas fa-network-wired"></i>
+        </div>
+        <h3>Redes e Impressoras</h3>
+        <p>Configuração de redes domésticas e empresariais, instalação e manutenção de impressoras, compartilhamento em rede.</p>
+        <button class="btn-whats" data-msg="Olá! Vim através do site da TS Informática e preciso de ajuda com redes e/ou impressoras.">
+          <i class="fab fa-whatsapp"></i> Abrir chamado
+        </button>
+      </article>
+    </div>
+  </section>
+
+  <!-- Seção de Garantias -->
+  <section class="garantias">
+    <div class="container">
+      <h2 class="section-title">Nossa Garantia de Serviço</h2>
+      <div class="garantias-grid">
+        <div class="garantia-item">
+          <i class="fas fa-shield-alt"></i>
+          <h3>30 Dias de Garantia</h3>
+          <p>Todos os serviços têm garantia de 30 dias contra defeitos</p>
+        </div>
+        <div class="garantia-item">
+          <i class="fas fa-lock"></i>
+          <h3>Backup Seguro</h3>
+          <p>Seus dados protegidos antes de qualquer procedimento</p>
+        </div>
+        <div class="garantia-item">
+          <i class="fas fa-tools"></i>
+          <h3>Peças Originais</h3>
+          <p>Utilizamos apenas componentes de qualidade comprovada</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção Sobre o Profissional -->
+  <section class="sobre" id="sobre">
+    <div class="sobre-container">
+      <div class="sobre-img">
+        <img src="perfil.jpg" alt="Técnico da TS Informática">
+      </div>
+      <div class="sobre-content">
+        <h2>Sobre o Profissional</h2>
+        <p>Olá, sou Tassio Souza Liborio,</p>
+        <p>Sou bacharel em Administração, com formação técnica em Informática, especializado em montagem e manutenção de computadores e notebooks. Atualmente estou cursando Engenharia da Computação, sempre me atualizando nas tendências e tecnologias do setor.</p>
+        <p>
+            Atuo há mais de 10 anos na área de tecnologia, oferecendo assistência técnica presencial e remota, com serviços completos de montagem, manutenção, instalação de sistemas, formatação e manutenção preventiva. Meu objetivo é oferecer soluções rápidas, seguras e personalizadas para cada cliente
+        </p>
+      </div>
+    </div>
+    
+    <!-- Tecnologias abaixo da seção Sobre -->
+    <div style="max-width: 1200px; margin: 60px auto 0; padding: 0 20px;">
+      <h3 style="text-align: center; font-size: 2rem; margin-bottom: 40px; color: var(--dark);">Tecnologias que domino:</h3>
+      
+      <div class="tech-category">
+        <i class="fas fa-microchip"></i>
+        <h4>Hardware e Manutenção</h4>
+      </div>
+      <div class="tech-stack">
+        <span class="tech-item"><i class="fas fa-check-circle"></i> Montagem e manutenção de PCs</span>
+        <span class="tech-item"><i class="fas fa-check-circle"></i> Diagnóstico e troca de componentes</span>
+        <span class="tech-item"><i class="fas fa-check-circle"></i> Limpeza física</span>
+        <span class="tech-item"><i class="fas fa-check-circle"></i> Troca de pasta térmica</span>
+        <span class="tech-item"><i class="fas fa-check-circle"></i> Upgrades de desempenho</span>
+        <span class="tech-item"><i class="fas fa-check-circle"></i> Recuperação de dados</span>
+      </div>
+      
+      <div class="tech-category">
+        <i class="fas fa-desktop"></i>
+        <h4>Sistemas Operacionais</h4>
+      </div>
+      <div class="tech-stack">
+        <span class="tech-item"><i class="fab fa-windows"></i> Windows (XP até 11)</span>
+        <span class="tech-item"><i class="fab fa-linux"></i> Linux (Ubuntu, Mint, Debian)</span>
+        <span class="tech-item"><i class="fas fa-download"></i> Instalação e formatação</span>
+        <span class="tech-item"><i class="fas fa-compress-arrows-alt"></i> Dual boot</span>
+        <span class="tech-item"><i class="fas fa-server"></i> Virtualização</span>
+      </div>
+      
+      <div class="tech-category">
+        <i class="fas fa-tools"></i>
+        <h4>Softwares e Ferramentas</h4>
+      </div>
+      <div class="tech-stack">
+        <span class="tech-item"><i class="fas fa-file-word"></i> Pacote Office</span>
+        <span class="tech-item"><i class="fas fa-search"></i> Ferramentas de diagnóstico</span>
+        <span class="tech-item"><i class="fas fa-hdd"></i> Software de backup e clonagem</span>
+        <span class="tech-item"><i class="fas fa-broom"></i> Otimização de sistemas</span>
+        <span class="tech-item"><i class="fas fa-shield-alt"></i> Antivírus e antimalware</span>
+      </div>
+      
+      <div class="tech-category">
+        <i class="fas fa-wifi"></i>
+        <h4>Redes e Conectividade</h4>
+      </div>
+      <div class="tech-stack">
+        <span class="tech-item"><i class="fas fa-network-wired"></i> Configuração de redes</span>
+        <span class="tech-item"><i class="fas fa-share-alt"></i> Compartilhamento de arquivos</span>
+        <span class="tech-item"><i class="fas fa-print"></i> Compartilhamento de impressoras</span>
+        <span class="tech-item"><i class="fas fa-router"></i> Configuração de roteadores</span>
+        <span class="tech-item"><i class="fas fa-ethernet"></i> Cabeamento de rede</span>
+      </div>
+      
+      <div class="tech-category">
+        <i class="fas fa-headset"></i>
+        <h4>Suporte e Atendimento</h4>
+      </div>
+      <div class="tech-stack">
+        <span class="tech-item"><i class="fas fa-laptop-house"></i> Suporte remoto</span>
+        <span class="tech-item"><i class="fas fa-user-cog"></i> Atendimento técnico presencial</span>
+        <span class="tech-item"><i class="fas fa-shopping-cart"></i> Consultoria em equipamentos</span>
+      </div>
+      
+      <div class="tech-category">
+        <i class="fas fa-print"></i>
+        <h4>Impressoras e Periféricos</h4>
+      </div>
+      <div class="tech-stack">
+        <span class="tech-item"><i class="fas fa-print"></i> Instalação e manutenção</span>
+        <span class="tech-item"><i class="fas fa-share-alt"></i> Compartilhamento em rede</span>
+        <span class="tech-item"><i class="fas fa-cogs"></i> Instalação de drivers</span>
+        <span class="tech-item"><i class="fas fa-tools"></i> Resolução de falhas</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção de Depoimentos  -->
+  <section class="depoimentos" id="depoimentos">
+    <h2 class="section-title">Depoimentos de Clientes</h2>
+    
+    <div class="depoimentos-container">
+      <div class="depoimento-card">
+        <div class="depoimento-texto">
+          "Meu computador estava super lento, mas depois da formatação ficou como novo. Serviço rápido e eficiente!"
+        </div>
+        <div class="depoimento-autor">
+          <div class="autor-avatar">
+            <i class="fas fa-user"></i>
+          </div>
+          <div class="autor-info">
+            <h4>Carlos Silva</h4>
+          </div>
+        </div>
+      </div>
+      
+      <div class="depoimento-card">
+        <div class="depoimento-texto">
+          "Resolveu meu problema de rede que ninguém conseguia solucionar. Profissional altamente capacitado!"
+        </div>
+        <div class="depoimento-autor">
+          <div class="autor-avatar">
+            <i class="fas fa-user"></i>
+          </div>
+          <div class="autor-info">
+            <h4>Mariana Oliveira</h4>
+          </div>
+        </div>
+      </div>
+      
+      <div class="depoimento-card">
+        <div class="depoimento-texto">
+          "Minha impressora voltou a funcionar perfeitamente. Atendimento personalizado e preço justo. Recomendo!"
+        </div>
+        <div class="depoimento-autor">
+          <div class="autor-avatar">
+            <i class="fas fa-user"></i>
+          </div>
+          <div class="autor-info">
+            <h4>Roberto Santos</h4>
+          </div>
+        </div>
+      </div>
+      
+      <div class="depoimento-card">
+        <div class="depoimento-texto">
+          "Fiz upgrade no meu notebook com SSD e mais memória. Agora está uma máquina! Entrega dentro do prazo."
+        </div>
+        <div class="depoimento-autor">
+          <div class="autor-avatar">
+            <i class="fas fa-user"></i>
+          </div>
+          <div class="autor-info">
+            <h4>Felipe Costa</h4>
+          </div>
+        </div>
+      </div>
+      
+      <div class="depoimento-card">
+        <div class="depoimento-texto">
+          "Suporte remoto rápido e eficaz. Resolveu meu problema com o Office sem precisar me deslocar."
+        </div>
+        <div class="depoimento-autor">
+          <div class="autor-avatar">
+            <i class="fas fa-user"></i>
+          </div>
+          <div class="autor-info">
+            <h4>Juliana Mendes</h4>
+          </div>
+        </div>
+      </div>
+      
+      <div class="depoimento-card">
+        <div class="depoimento-texto">
+          "Montaram meu computador gamer exatamente como eu queria. Peças de qualidade e montagem profissional."
+        </div>
+        <div class="depoimento-autor">
+          <div class="autor-avatar">
+            <i class="fas fa-user"></i>
+          </div>
+          <div class="autor-info">
+            <h4>Rafael Almeida</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Área para enviar depoimento -->
+    <div class="enviar-depoimento">
+      <h3>Deixe seu depoimento</h3>
+      <form class="form-depoimento" id="depoimentoForm">
+        <div class="form-group">
+          <input type="text" id="nome-depoimento" class="form-control" placeholder="Seu nome" required>
+        </div>
+        
+        <div class="form-group">
+          <textarea id="texto-depoimento" class="form-control" placeholder="Seu depoimento (entre aspas)" required rows="4"></textarea>
+        </div>
+        
+        <button type="submit" class="btn-enviar-depoimento">
+          <i class="fas fa-paper-plane"></i> Enviar Depoimento
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Seção de Contato com Formulário -->
+  <section class="contato" id="contato">
+    <h2 class="section-title">Entre em Contato</h2>
+    <div class="contact-container">
+      <div class="contact-info">
+        <h3>Informações de Contato</h3>
+        
+        <div class="contact-detail">
+          <div class="contact-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div class="contact-text">
+            <h4>Localização</h4>
+            <p>Rua Porto Alegre, 106 - Centro, Jequitinhonha/MG</p>
+          </div>
+        </div>
+        
+        <div class="contact-detail">
+          <div class="contact-icon">
+            <i class="fas fa-phone-alt"></i>
+          </div>
+          <div class="contact-text">
+            <h4>Telefone</h4>
+            <p>(33) 999818184</p>
+          </div>
+        </div>
+        
+        <div class="contact-detail">
+          <div class="contact-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="contact-text">
+            <h4>Email</h4>
+            <p>tassio_000@hotmail.com</p>
+          </div>
+        </div>
+        
+        <div class="contact-detail">
+          <div class="contact-icon">
+            <i class="fab fa-whatsapp"></i>
+          </div>
+          <div class="contact-text">
+            <h4>WhatsApp</h4>
+            <p>(33) 999818184</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="contact-form">
+        <h3>Envie sua mensagem</h3>
+        <!-- Formulário configurado para Formspree -->
+        <form id="emailForm" action="https://formspree.io/f/mdkzpvad" method="POST">
+          <!-- Campo oculto para definir o assunto do e-mail -->
+          <input type="hidden" name="_subject" value="Nova mensagem do site TS Informática">
+          
+          <div class="form-group">
+            <label for="name">Nome Completo</label>
+            <input type="text" id="name" name="name" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="phone">Telefone</label>
+            <input type="tel" id="phone" name="phone" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="subject">Assunto</label>
+            <input type="text" id="subject" name="subject" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Mensagem</label>
+            <textarea id="message" name="message" class="form-control" required></textarea>
+          </div>
+          
+          <button type="submit" class="btn-submit">
+            <i class="fas fa-paper-plane"></i> Enviar Mensagem
+          </button>
+        </form>
+        
+        <!-- Área de agendamento -->
+        <div class="agendamento">
+          <h3>Agendamento Rápido</h3>
+          <p>Clique abaixo para agendar seu atendimento diretamente pelo WhatsApp</p>
+          <button class="btn-whats" id="btnAgendar">
+            <i class="fas fa-calendar-check"></i> Agendar Atendimento
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer com redes sociais -->
+  <footer>
+    <div class="social-links">
+      <a href="https://www.instagram.com/tassiosouzaliborioti?utm_source=qr&igsh=MXVlZ2M5ZmZnd3JiOA==" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/share/16dZ9Z6FfR/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.linkedin.com/in/tassio-souza-b80962371?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+    <p>&copy; 2025 TS Informática - Todos os direitos reservados</p>
+    <p>Desenvolvido por <a href="https://kymdev.github.io/PlayPage/" target="_blank">PlayPage</a></p>
+  </footer>
+
+  <!-- Botão de Emergência 24h -->
+  <div class="emergency-btn">
+    <a href="https://wa.me/5533999818184?text=URGENTE!+Preciso+de+atendimento+técnico+imediato+24h+da+TS+Informática">
+      <i class="fas fa-ambulance"></i>
+      EMERGÊNCIA 24H
+    </a>
+  </div>
+
+  <!-- Pop-up de Saída melhorado -->
+  <div class="exit-popup" id="exitPopup">
+    <div class="popup-content">
+      <button class="close-popup">&times;</button>
+      <h3>Espere! Não vá embora ainda</h3>
+      <p>Oferecemos <strong>10% de desconto</strong> na sua primeira visita!</p>
+      <p>Use o cupom:</p>
+      <div class="coupon">PRIMEIRAVISITA</div>
+      <p>Válido por 30 dias</p>
+      <button class="btn-whats popup-btn">
+        <i class="fab fa-whatsapp"></i> Agendar com Desconto
+      </button>
+      <div class="dont-show-again">
+        <input type="checkbox" id="dontShowAgain">
+        <label for="dontShowAgain">Não mostrar novamente</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS para funcionalidades melhorado -->
+  <script>
+    // Menu mobile
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+    
+    navToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      navToggle.innerHTML = navMenu.classList.contains('active') 
+        ? '<i class="fas fa-times"></i>' 
+        : '<i class="fas fa-bars"></i>';
+    });
+    
+    // Fechar menu ao clicar em um link
+    document.querySelectorAll('#navMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+      });
+    });
+    
+    // Botões WhatsApp
+    document.querySelectorAll('.btn-whats').forEach(button => {
+      button.addEventListener('click', () => {
+        const msg = encodeURIComponent(button.getAttribute('data-msg') || "Olá! Vim através do site da TS Informática e gostaria de informações sobre seus serviços.");
+        const numero = '5533999818184';
+        const url = `https://wa.me/${numero}?text=${msg}`;
+        window.open(url, '_blank');
+      });
+    });
+    
+    // Formulário de contato usando Formspree
+    const emailForm = document.getElementById('emailForm');
+    
+    emailForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const submitBtn = emailForm.querySelector('.btn-submit');
+      const originalHTML = submitBtn.innerHTML;
+      
+      // Feedback visual de carregamento
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+      submitBtn.disabled = true;
+      
+      try {
+        const formData = new FormData(emailForm);
+        const response = await fetch(emailForm.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+        
+        if (response.ok) {
+          // Sucesso
+          submitBtn.innerHTML = '<i class="fas fa-check"></i> Mensagem Enviada!';
+          submitBtn.style.background = 'linear-gradient(90deg, #25D366, #1EBE57)';
+          emailForm.reset();
+        } else {
+          // Erro
+          const errorData = await response.json();
+          throw new Error(errorData.error || 'Erro no envio');
+        }
+      } catch (error) {
+        console.error('Erro:', error);
+        alert('Ocorreu um erro ao enviar a mensagem. Por favor, tente novamente mais tarde ou entre em contato pelo WhatsApp.');
+        submitBtn.innerHTML = originalHTML;
+        submitBtn.disabled = false;
+        return;
+      }
+      
+      // Resetar o botão após 3 segundos
+      setTimeout(() => {
+        submitBtn.innerHTML = originalHTML;
+        submitBtn.style.background = 'linear-gradient(90deg, var(--primary), var(--tech-purple))';
+        submitBtn.disabled = false;
+      }, 3000);
+    });
+    
+    // Formulário de depoimento
+    const depoimentoForm = document.getElementById('depoimentoForm');
+    
+    depoimentoForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const nome = document.getElementById('nome-depoimento').value;
+      const texto = document.getElementById('texto-depoimento').value;
+      
+      // Feedback visual
+      const submitBtn = depoimentoForm.querySelector('.btn-enviar-depoimento');
+      const originalHTML = submitBtn.innerHTML;
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+      submitBtn.disabled = true;
+      
+      // Simular envio
+      setTimeout(() => {
+        submitBtn.innerHTML = '<i class="fas fa-check"></i> Depoimento Enviado!';
+        submitBtn.style.background = 'linear-gradient(90deg, #25D366, #1EBE57)';
+        
+        // Reset após 3 segundos
+        setTimeout(() => {
+          depoimentoForm.reset();
+          submitBtn.innerHTML = originalHTML;
+          submitBtn.style.background = 'linear-gradient(90deg, var(--primary), var(--tech-purple))';
+          submitBtn.disabled = false;
+          
+          // Mostrar mensagem de agradecimento
+          alert('Obrigado pelo seu depoimento! Seu comentário será analisado antes de ser publicado.');
+        }, 3000);
+      }, 1500);
+    });
+    
+    // Scroll suave para âncoras
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 90,
+            behavior: 'smooth'
+          });
+          
+          // Fechar menu mobile se estiver aberto
+          if (navMenu.classList.contains('active')) {
+            navMenu.classList.remove('active');
+            navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+          }
+        }
+      });
+    });
+    
+    // Efeito parallax aprimorado
+    window.addEventListener('scroll', () => {
+      const scrollPosition = window.scrollY;
+      const hero = document.querySelector('.hero');
+      
+      if (hero) {
+        hero.style.backgroundPositionY = -scrollPosition * 0.5 + 'px';
+      }
+    });
+    
+    // Pop-up de saída melhorado
+    const exitPopup = document.getElementById('exitPopup');
+    const closePopup = document.querySelector('.close-popup');
+    const dontShowAgain = document.getElementById('dontShowAgain');
+    
+    // Verificar se o usuário já optou por não ver o popup
+    if (localStorage.getItem('dontShowPopup') === 'true') {
+      // Não mostrar o popup
+      exitPopup.style.display = 'none';
+    }
+    
+    // Fechar popup e salvar preferência se marcado
+    closePopup.addEventListener('click', () => {
+      exitPopup.classList.remove('active');
+      if (dontShowAgain.checked) {
+        localStorage.setItem('dontShowPopup', 'true');
+      }
+    });
+    
+    // Botão WhatsApp no pop-up
+    document.querySelector('.popup-btn').addEventListener('click', () => {
+      const msg = encodeURIComponent("Olá! Vim pelo site e quero usar o cupom PRIMEIRAVISITA para agendar com 10% de desconto");
+      const url = `https://wa.me/5533999818184?text=${msg}`;
+      window.open(url, '_blank');
+      exitPopup.classList.remove('active');
+      if (dontShowAgain.checked) {
+        localStorage.setItem('dontShowPopup', 'true');
+      }
+    });
+    
+    // Mostrar popup após 10 segundos na primeira visita (se não tiver optado por não ver)
+    setTimeout(() => {
+      if (localStorage.getItem('dontShowPopup') !== 'true') {
+        exitPopup.classList.add('active');
+      }
+    }, 10000); // 10 segundos
+    
+    // Mostrar popup quando o usuário chegar no final da página (90% do scroll)
+    window.addEventListener('scroll', () => {
+      // Se já estiver visível, não faz nada
+      if (exitPopup.classList.contains('active') || localStorage.getItem('dontShowPopup') === 'true') {
+        return;
+      }
+      
+      // Calcular a posição do scrolll
+      const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      
+      // Verificar se o usuário chegou no final (90%) e ja era 
+      if (scrollPosition + windowHeight >= documentHeight * 0.9) {
+        exitPopup.classList.add('active');
+      }
+    });
+    
+    // Agendamento rápido
+    document.getElementById('btnAgendar').addEventListener('click', () => {
+      const msg = encodeURIComponent("Olá! Gostaria de agendar um atendimento. Por favor informe datas e horários disponíveis.");
+      const url = `https://wa.me/5533999818184?text=${msg}`;
+      window.open(url, '_blank');
+    });
+  </script>
+</body>
+</html>
