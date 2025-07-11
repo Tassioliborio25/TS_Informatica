@@ -67,6 +67,12 @@
       padding: 0 20px;
     }
     
+    .brand-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
     .logo-container {
       width: 100px;
       height: 100px;
@@ -81,6 +87,13 @@
       height: 100%;
       object-fit: cover;
       display: block;
+    }
+    
+    .brand-name {
+      color: white;
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
     }
     
     nav ul {
@@ -124,7 +137,7 @@
       height: 85vh;
       background: 
         linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)),
-        url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+        url('https://i.gifer.com/J4o.gif');
       background-attachment: fixed;
       background-position: center;
       background-repeat: no-repeat;
@@ -741,15 +754,26 @@
       color: var(--secondary);
     }
     
-    /* Botão de emergência 24h */
+    /* Botão de emergência 24h - MODIFICADO PARA MANTER TAMANHO */
     .emergency-btn {
       position: fixed;
       bottom: 30px;
       right: 30px;
       z-index: 1000;
       animation: pulse 2s infinite;
+      cursor: grab;
+      user-select: none;
+      touch-action: none;
+      /* Mantém o tamanho fixo */
+      width: max-content;
+      height: auto;
     }
-    
+
+    .emergency-btn.dragging {
+      animation: none;
+      cursor: grabbing;
+    }
+
     .emergency-btn a {
       display: flex;
       align-items: center;
@@ -761,11 +785,13 @@
       font-weight: 700;
       text-decoration: none;
       box-shadow: 0 5px 20px rgba(255, 0, 0, 0.4);
-      transition: all 0.3s ease;
+      transition: box-shadow 0.3s ease;
+      /* Mantém o tamanho constante */
+      min-width: 200px;
+      justify-content: center;
     }
-    
+
     .emergency-btn a:hover {
-      transform: scale(1.05);
       box-shadow: 0 7px 25px rgba(255, 0, 0, 0.6);
     }
     
@@ -911,6 +937,10 @@
       .garantias-grid {
         gap: 20px;
       }
+      
+      .brand-name {
+        font-size: 1.5rem;
+      }
     }
     
     @media (max-width: 768px) {
@@ -934,6 +964,10 @@
       
       nav ul.active {
         right: 0;
+      }
+      
+      .brand-name {
+        display: none;
       }
       
       .hero {
@@ -978,13 +1012,16 @@
         padding: 20px;
       }
       
+      /* Botão de emergência em dispositivos móveis */
+      .emergency-btn {
+        bottom: 20px !important;
+        right: 20px !important;
+      }
+      
       .emergency-btn a {
         padding: 12px 20px;
         font-size: 0.9rem;
-      }
-      
-      .popup-content {
-        padding: 25px;
+        min-width: 180px;
       }
     }
     
@@ -1046,6 +1083,7 @@
       .emergency-btn a {
         padding: 10px 15px;
         font-size: 0.8rem;
+        min-width: 160px;
       }
       
       .popup-content {
@@ -1066,8 +1104,11 @@
   <!-- Header com navegação -->
   <header>
     <div class="header-container">
-      <div class="logo-container">
-        <img src="icone.jpg" alt="TS Informática" class="logo" />
+      <div class="brand-container">
+        <div class="logo-container">
+          <img src="icone.jpg" alt="TS Informática" class="logo" />
+        </div>
+        <h1 class="brand-name">TS Informática</h1>
       </div>
       
       <button class="nav-btn" id="navToggle">
@@ -1154,7 +1195,7 @@
         </button>
       </article>
       
-      <!-- Novo card para Redes e Impressoras -->
+      <!-- Card para Redes e Impressoras -->
       <article class="card">
         <div class="card-icon">
           <i class="fas fa-network-wired"></i>
@@ -1162,6 +1203,18 @@
         <h3>Redes e Impressoras</h3>
         <p>Configuração de redes domésticas e empresariais, instalação e manutenção de impressoras, compartilhamento em rede.</p>
         <button class="btn-whats" data-msg="Olá! Vim através do site da TS Informática e preciso de ajuda com redes e/ou impressoras.">
+          <i class="fab fa-whatsapp"></i> Abrir chamado
+        </button>
+      </article>
+      
+      <!-- Novo card para Montagem de PC Gamer -->
+      <article class="card">
+        <div class="card-icon">
+          <i class="fas fa-gamepad"></i>
+        </div>
+        <h3>Montagem de PC Gamer</h3>
+        <p>Computadores personalizados para jogos de alto desempenho. Escolha os melhores componentes e montamos para você.</p>
+        <button class="btn-whats" data-msg="Olá! Vim através do site da TS Informática e quero informações sobre montagem de PC Gamer.">
           <i class="fab fa-whatsapp"></i> Abrir chamado
         </button>
       </article>
@@ -1501,8 +1554,8 @@
     <p>Desenvolvido por <a href="https://kymdev.github.io/PlayPage/" target="_blank">PlayPage</a></p>
   </footer>
 
-  <!-- Botão de Emergência 24h -->
-  <div class="emergency-btn">
+  <!-- Botão de Emergência 24h ARRASTÁVEL -->
+  <div class="emergency-btn" id="emergencyBtn">
     <a href="https://wa.me/5533999818184?text=URGENTE!+Preciso+de+atendimento+técnico+imediato+24h+da+TS+Informática">
       <i class="fas fa-ambulance"></i>
       EMERGÊNCIA 24H
@@ -1732,6 +1785,98 @@
       const msg = encodeURIComponent("Olá! Gostaria de agendar um atendimento. Por favor informe datas e horários disponíveis.");
       const url = `https://wa.me/5533999818184?text=${msg}`;
       window.open(url, '_blank');
+    });
+
+    // ===== FUNCIONALIDADE DE ARRASTAR ATUALIZADA =====
+    const emergencyBtn = document.getElementById('emergencyBtn');
+    let isDragging = false;
+    let offsetX, offsetY;
+    
+    // Função para iniciar o arrasto
+    function startDrag(e) {
+      isDragging = true;
+      emergencyBtn.classList.add('dragging');
+      
+      // Determinar se é um evento de toque ou mouse
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      
+      // Calcular a posição do cursor em relação ao elemento
+      const rect = emergencyBtn.getBoundingClientRect();
+      offsetX = clientX - rect.left;
+      offsetY = clientY - rect.top;
+      
+      // Alterar o cursor para "grabbing"
+      emergencyBtn.style.cursor = 'grabbing';
+    }
+    
+    // Função para arrastar o elemento
+    function drag(e) {
+      if (!isDragging) return;
+      
+      e.preventDefault();
+      
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      
+      // Calcular nova posição
+      const x = clientX - offsetX;
+      const y = clientY - offsetY;
+      
+      // Limitar à área da janela
+      const maxX = window.innerWidth - emergencyBtn.offsetWidth;
+      const maxY = window.innerHeight - emergencyBtn.offsetHeight;
+      
+      // Aplicar posição com limites
+      emergencyBtn.style.left = `${Math.max(0, Math.min(x, maxX))}px`;
+      emergencyBtn.style.top = `${Math.max(0, Math.min(y, maxY))}px`;
+    }
+    
+    // Função para parar o arrasto
+    function stopDrag() {
+      isDragging = false;
+      emergencyBtn.classList.remove('dragging');
+      emergencyBtn.style.cursor = 'grab';
+      
+      // Salvar posição
+      localStorage.setItem('btnPosition', JSON.stringify({
+        left: emergencyBtn.style.left,
+        top: emergencyBtn.style.top
+      }));
+    }
+    
+    // Adicionar eventos de início de arrasto
+    emergencyBtn.addEventListener('mousedown', startDrag);
+    emergencyBtn.addEventListener('touchstart', startDrag);
+    
+    // Adicionar eventos de movimento
+    document.addEventListener('mousemove', drag);
+    document.addEventListener('touchmove', drag);
+    
+    // Adicionar eventos de fim de arrasto
+    document.addEventListener('mouseup', stopDrag);
+    document.addEventListener('touchend', stopDrag);
+    
+    // Prevenir abertura acidental do link ao arrastar
+    emergencyBtn.querySelector('a').addEventListener('click', function(e) {
+      if (isDragging) {
+        e.preventDefault();
+      }
+    });
+    
+    // Restaurar posição do localStorage ao carregar a página
+    window.addEventListener('load', () => {
+      const savedPosition = localStorage.getItem('btnPosition');
+      if (savedPosition) {
+        const position = JSON.parse(savedPosition);
+        emergencyBtn.style.left = position.left;
+        emergencyBtn.style.top = position.top;
+        emergencyBtn.style.position = 'fixed';
+      } else {
+        // Posição padrão se não houver salva
+        emergencyBtn.style.bottom = '30px';
+        emergencyBtn.style.right = '30px';
+      }
     });
   </script>
 </body>
